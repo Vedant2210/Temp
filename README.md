@@ -41,6 +41,29 @@ This tool is designed for:
 ✅ Configurable via `config/settings.py`  
 ✅ Modular and extensible for new data pipelines  
 
+## 🚀 Key Features
+
+✅ **Multi-Project Scraping:**  
+Fetches issue data from multiple **Apache projects** such as **Hadoop**, **Spark**, and **Kafka** using a unified pipeline.
+
+✅ **Data Transformation:**  
+Converts **raw JSON responses** into **cleaned, structured `.jsonl` format** suitable for data analysis and visualization.
+
+✅ **Rate Limit & Retry Handling:**  
+Automatically handles **pagination**, **rate limits**, and **network retries** to ensure complete and stable data collection.
+
+✅ **Comprehensive Logging:**  
+Logs every step of the process in detailed log files (`logs/scraper.log`) for **debugging**, **monitoring**, and **traceability**.
+
+✅ **Checkpoint System (Fault Tolerance):**  
+Uses lightweight `.checkpoint_*` files to **resume from the last completed stage** if the process is interrupted — ensuring **fault-tolerant execution**.
+
+✅ **Configurable Pipeline:**  
+All settings (project names, limits, file paths, etc.) are easily customizable via **`config/settings.py`**.
+
+✅ **Modular & Extensible Design:**  
+Each stage (scraping, transformation, saving, logging) is **independent and reusable**, making it easy to extend for **new projects or APIs**.
+
 ---
 
 ## 📁 Project Structure
