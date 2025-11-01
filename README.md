@@ -99,17 +99,17 @@ Follow these steps to set up and run the scraper locally 👇
 
 ---
 
-### 1️⃣ Clone the Repository
+## 1️⃣ Clone the Repository
 
 ```
 git clone https://github.com/Vedant2210/Apache_Jira_Scraper.git
 cd Apache_Jira_Scraper
 ```
-2️⃣ Create a Virtual Environment
+##2️⃣ Create a Virtual Environment
 ```
 python -m venv venv
 ```
-3️⃣ Activate the Virtual Environment
+##3️⃣ Activate the Virtual Environment
 Windows:
 ```
 venv\Scripts\activate
@@ -118,24 +118,24 @@ macOS/Linux:
 ```
 source venv/bin/activate
 ```
-4️⃣ Install Dependencies
+##4️⃣ Install Dependencies
 ```
 pip install -r requirements.txt
 ```
-5️⃣ Verify Installation
+##5️⃣ Verify Installation
 To ensure Python and pip are correctly installed, run:
 ```
 python --version
 pip --version
 ```
-Expected output example:
+## Expected output example:
 ```
 nginx
 
 Python 3.10.x
 pip 23.x.x
 ```
-▶️ Usage Guide
+## Usage Guide
 Once setup is complete, run the scraper:
 ```
 python main.py
@@ -169,7 +169,7 @@ Each project’s issue data will be scraped, transformed, and saved in .jsonl fo
 | 🔟 | **End of pipeline** | — | Process completed successfully |
 
 ---
-Output Format
+##Output Format
 
 All processed issues are stored in:
 ```
@@ -180,7 +180,7 @@ Example:
 {"id": "HADOOP-1001", "summary": "Fix namenode error", "status": "Open", "reporter": "user123"}
 {"id": "SPARK-2020", "summary": "Improve shuffle performance", "status": "Closed", "reporter": "dev456"}
 ```
-🪵 Logging
+## Logging
 
 Logs are automatically generated to help you monitor scraping progress and errors.
 All logs are stored in the path specified in settings.py (default: logs/scraper.log).
