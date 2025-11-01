@@ -75,3 +75,60 @@ apache-jira-scraper/
 ├── main.py                   # Entry point for the scraper
 ├── requirements.txt          # Dependencies list
 └── README.md                 # Project documentation
+
+
+```
+## ⚙️ Installation & Setup
+
+Follow these steps to set up and run the scraper locally 👇
+
+---
+
+### 1️⃣ Clone the Repository
+
+```
+git clone https://github.com/Vedant2210/Apache_Jira_Scraper.git
+cd Apache_Jira_Scraper
+```
+2️⃣ Create a Virtual Environment
+```
+python -m venv venv
+```
+3️⃣ Activate the Virtual Environment
+Windows:
+```
+venv\Scripts\activate
+```
+macOS/Linux:
+```
+source venv/bin/activate
+```
+4️⃣ Install Dependencies
+```
+pip install -r requirements.txt
+```
+5️⃣ Verify Installation
+To ensure Python and pip are correctly installed, run:
+```
+python --version
+pip --version
+```
+Expected output example:
+```
+nginx
+
+Python 3.10.x
+pip 23.x.x
+```
+▶️ Usage Guide
+Once setup is complete, run the scraper:
+```
+python main.py
+```
+This will start fetching issue data for all projects listed inside your config/settings.py file.
+
+By default, the projects are:
+```
+DEFAULT_PROJECTS = ["HADOOP", "SPARK", "KAFKA"]
+```
+Each project’s issue data will be scraped, transformed, and saved in .jsonl format under the data/processed directory.
