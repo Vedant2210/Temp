@@ -93,13 +93,13 @@ Below is a table describing each key configuration parameter:
 | `LOG_FILE`           | Path to the log file for tracking scraping progress      | `"logs/scraper.log"`                                         |
 | `BASE_URL`           | Base URL of the Apache JIRA server                       | `"https://issues.apache.org/jira/rest/api/2/search"`         |
 
-### ⚙️ Installation & Setup
+## ⚙️ Installation & Setup
 
 Follow these steps to set up and run the scraper locally 👇
 
 ---
 
-# 1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```
 git clone https://github.com/Vedant2210/Apache_Jira_Scraper.git
@@ -107,12 +107,12 @@ cd Apache_Jira_Scraper
 
 ```
 ---
-#2️⃣ Create a Virtual Environment
+### 2️⃣ Create a Virtual Environment
 ```
 python -m venv venv
 ```
 ---
-#3️⃣ Activate the Virtual Environment
+### 3️⃣ Activate the Virtual Environment
 Windows:
 ```
 venv\Scripts\activate
@@ -122,25 +122,25 @@ macOS/Linux:
 source venv/bin/activate
 ```
 ---
-#4️⃣ Install Dependencies
+### 4️⃣ Install Dependencies
 ```
 pip install -r requirements.txt
 ```
 ---
-#5️⃣ Verify Installation
+### 5️⃣ Verify Installation
 To ensure Python and pip are correctly installed, run:
 ```
 python --version
 pip --version
 ```
-# Expected output example:
+### Expected output example:
 ```
 nginx
 
 Python 3.10.x
 pip 23.x.x
 ```
-# Usage Guide
+### Usage Guide
 Once setup is complete, run the scraper:
 ```
 python main.py
