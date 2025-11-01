@@ -1,27 +1,18 @@
-# 🐘 Apache JIRA Scraper
+# Apache JIRA Scraper
 
 > A robust, modular Python-based scraper to collect, process, and transform issue data from **Apache JIRA** projects (like Hadoop, Spark, and Kafka) into structured **JSONL format** — ideal for analytics or LLM training.
 
 ---
 
-## 🏷️ Badges
-
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Contributions](https://img.shields.io/badge/Contributions-Welcome-orange)
-
----
-
-## 🧠 Overview
+## Overview
 
 The **Apache JIRA Scraper** automates the extraction of public issue data from Apache’s JIRA system using REST APIs.  
 It helps researchers, developers, and data engineers create high-quality datasets by scraping issue descriptions, comments, metadata, and transforming them into a **machine-readable** format.
 
 This tool is designed for:
-- 📊 Data collection for ML/NLP research  
-- 🧪 Issue tracking & project analytics  
-- 🤖 Training datasets for LLM fine-tuning  
+-  Data collection for ML/NLP research  
+-  Issue tracking & project analytics  
+-  Training datasets for LLM fine-tuning  
 
 ---
 
