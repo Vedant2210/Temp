@@ -31,16 +31,6 @@ This tool is designed for:
 
 ---
 
-## 🧩 Features
-
-✅ Fetches issue data from multiple Apache projects (Hadoop, Spark, Kafka, etc.)  
-✅ Transforms raw JSON into cleaned `.jsonl` format  
-✅ Auto-handles rate limits and retries  
-✅ Logs every step for debugging & monitoring  
-✅ Checkpoint system for fault tolerance  
-✅ Configurable via `config/settings.py`  
-✅ Modular and extensible for new data pipelines  
-
 ## 🚀 Key Features
 
 ✅ **Multi-Project Scraping:**  
