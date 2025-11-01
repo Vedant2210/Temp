@@ -104,11 +104,14 @@ Follow these steps to set up and run the scraper locally 👇
 ```
 git clone https://github.com/Vedant2210/Apache_Jira_Scraper.git
 cd Apache_Jira_Scraper
+
 ```
+---
 ###2️⃣ Create a Virtual Environment
 ```
 python -m venv venv
 ```
+---
 ###3️⃣ Activate the Virtual Environment
 Windows:
 ```
@@ -118,10 +121,12 @@ macOS/Linux:
 ```
 source venv/bin/activate
 ```
+---
 ###4️⃣ Install Dependencies
 ```
 pip install -r requirements.txt
 ```
+---
 ###5️⃣ Verify Installation
 To ensure Python and pip are correctly installed, run:
 ```
