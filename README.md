@@ -177,16 +177,18 @@ Example log entry:
 
 ---
 
-### 🔄 Mermaid Flowchart
+### 🧩 End-to-End Workflow
 
-```mermaid
-flowchart TD
-    A([Start main.py]) --> B[Load Configuration (config/settings.py)]
-    B --> C[Fetch Issues - JiraScraper (scraper.py)]
-    C --> D[Handle Pagination, Rate Limits & Retries]
-    D --> E[Save Raw Data (data/raw/)]
-    E --> F[Clean & Transform Data - DataTransformer (transform.py)]
-    F --> G[Generate JSONL Output]
-    G --> H[Save Processed Data (data/processed/)]
-    H --> I[Log Progress (logs/*.log)]
-    I --> J([End of Pipeline])
+| Step | Description | File / Module | Output / Notes | Checkpoint |
+|------|--------------|----------------|----------------|-------------|
+| 1️⃣ | **Start the pipeline** | `main.py` | Initializes all modules and loggers | — |
+| 2️⃣ | **Load configuration settings** | `config/settings.py` | Loads API tokens, Jira URLs, and output paths | `.checkpoint_config` |
+| 3️⃣ | **Fetch issues from Jira** | `scraper.py` (class: `JiraScraper`) | Collects raw issues using API requests | `.checkpoint_scraper` |
+| 4️⃣ | **Handle pagination, rate limits, and retries** | `scraper.py` | Ensures reliable, complete data fetching | Integrated |
+| 5️⃣ | **Save raw JSON data** | `data/raw/` | Saves raw unprocessed data | `.checkpoint_raw` |
+| 6️⃣ | **Clean and transform data** | `transform.py` (class: `DataTransformer`) | Applies cleaning, formatting, deduplication | `.checkpoint_transformer` |
+| 7️⃣ | **Generate JSONL output** | `transform.py` | Creates structured JSONL file for downstream tasks | `.checkpoint_jsonl` |
+| 8️⃣ | **Save processed data** | `data/processed/` | Final cleaned and validated dataset | `.checkpoint_processed` |
+| 9️⃣ | **Log progress** | `logs/*.log` | Tracks each step and any exceptions | Auto |
+| 🔟 | **Resume from last checkpoint (if rerun)** | `main.py` | Skips completed stages automatically | — |
+| ✅ | **End of pipeline** | — | Successfully completed workflow | — |
