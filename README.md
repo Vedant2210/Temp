@@ -160,3 +160,18 @@ Example log entry:
 [2025-11-01 14:25:37] INFO: Fetched 100 issues from project HADOOP
 [2025-11-01 14:26:12] WARNING: Failed to fetch issue SPARK-998 (Timeout)
 ```
+
+## ⚙️ Data Flow
+
+```mermaid
+flowchart LR
+    A[Start main.py] --> B[Load config/settings.py]
+    B --> C[JiraScraper: Fetch Issues]
+    C --> D[Handle Pagination, Rate Limits, Retries]
+    D --> E[Save Raw Data in data/raw/]
+    E --> F[DataTransformer: Clean & Process]
+    F --> G[Generate JSONL File]
+    G --> H[Save Processed Data to data/processed/]
+    H --> I[Log Progress in logs/*.log]
+    I --> J[End]
+
