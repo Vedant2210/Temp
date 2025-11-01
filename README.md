@@ -159,3 +159,13 @@ Example:
 {"id": "HADOOP-1001", "summary": "Fix namenode error", "status": "Open", "reporter": "user123"}
 {"id": "SPARK-2020", "summary": "Improve shuffle performance", "status": "Closed", "reporter": "dev456"}
 ```
+🪵 Logging
+
+Logs are automatically generated to help you monitor scraping progress and errors.
+All logs are stored in the path specified in settings.py (default: logs/scraper.log).
+
+Example log entry:
+```
+[2025-11-01 14:25:37] INFO: Fetched 100 issues from project HADOOP
+[2025-11-01 14:26:12] WARNING: Failed to fetch issue SPARK-998 (Timeout)
+```
