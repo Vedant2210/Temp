@@ -152,6 +152,23 @@ Each project’s issue data will be scraped, transformed, and saved in .jsonl fo
 
 
 
+
+### 🧩 Project Pipeline Overview
+
+| Step | Description | File / Module | Output / Notes |
+|------|--------------|----------------|----------------|
+| 1️⃣ | **Start the main script** | `main.py` | Initializes the pipeline |
+| 2️⃣ | **Load configuration settings** | `config/settings.py` | Loads parameters and credentials |
+| 3️⃣ | **Fetch issues from Jira** | `scraper.py` (class: `JiraScraper`) | Retrieves issues via API |
+| 4️⃣ | **Handle pagination, rate limits, and retries** | `scraper.py` | Ensures all pages are fetched reliably |
+| 5️⃣ | **Save raw JSON data** | `data/raw/` | Stores unprocessed API responses |
+| 6️⃣ | **Clean and transform data** | `transform.py` (class: `DataTransformer`) | Formats and preprocesses data |
+| 7️⃣ | **Generate JSONL formatted output** | `transform.py` | Produces structured JSONL |
+| 8️⃣ | **Save processed data** | `data/processed/` | Stores final cleaned dataset |
+| 9️⃣ | **Log progress and status** | `logs/*.log` | Keeps track of run details |
+| 🔟 | **End of pipeline** | — | Process completed successfully |
+
+---
 Output Format
 
 All processed issues are stored in:
@@ -173,33 +190,3 @@ Example log entry:
 [2025-11-01 14:25:37] INFO: Fetched 100 issues from project HADOOP
 [2025-11-01 14:26:12] WARNING: Failed to fetch issue SPARK-998 (Timeout)
 ```
-### 🧩 Project Pipeline Overview
-
-| Step | Description | File / Module | Output / Notes |
-|------|--------------|----------------|----------------|
-| 1️⃣ | **Start the main script** | `main.py` | Initializes the pipeline |
-| 2️⃣ | **Load configuration settings** | `config/settings.py` | Loads parameters and credentials |
-| 3️⃣ | **Fetch issues from Jira** | `scraper.py` (class: `JiraScraper`) | Retrieves issues via API |
-| 4️⃣ | **Handle pagination, rate limits, and retries** | `scraper.py` | Ensures all pages are fetched reliably |
-| 5️⃣ | **Save raw JSON data** | `data/raw/` | Stores unprocessed API responses |
-| 6️⃣ | **Clean and transform data** | `transform.py` (class: `DataTransformer`) | Formats and preprocesses data |
-| 7️⃣ | **Generate JSONL formatted output** | `transform.py` | Produces structured JSONL |
-| 8️⃣ | **Save processed data** | `data/processed/` | Stores final cleaned dataset |
-| 9️⃣ | **Log progress and status** | `logs/*.log` | Keeps track of run details |
-| 🔟 | **End of pipeline** | — | Process completed successfully |
-
----
-### 🔄 Mermaid Flowchart
-
-```mermaid
-flowchart TD
-    A([Start main.py]) --> B[Load Configuration (config/settings.py)]
-    B --> C[Fetch Issues - JiraScraper (scraper.py)]
-    C --> D[Handle Pagination, Rate Limits & Retries]
-    D --> E[Save Raw Data (data/raw/)]
-    E --> F[Clean & Transform Data - DataTransformer (transform.py)]
-    F --> G[Generate JSONL Output]
-    G --> H[Save Processed Data (data/processed/)]
-    H --> I[Log Progress (logs/*.log)]
-    I --> J[Checkpoint Created for Each Stage]
-    J --> K([End of Pipeline / Resume if Interrupted])
