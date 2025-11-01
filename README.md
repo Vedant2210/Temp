@@ -132,3 +132,18 @@ By default, the projects are:
 DEFAULT_PROJECTS = ["HADOOP", "SPARK", "KAFKA"]
 ```
 Each project’s issue data will be scraped, transformed, and saved in .jsonl format under the data/processed directory.
+
+
+## ⚙️ Configuration
+
+All configuration variables are stored in **`config/settings.py`**.  
+Below is a table describing each key configuration parameter:
+
+| Variable Name       | Description                                              | Example Value                                                |
+|----------------------|----------------------------------------------------------|--------------------------------------------------------------|
+| `PROJECTS`           | List of Apache project names to scrape                   | `["HADOOP", "SPARK", "KAFKA"]`                              |
+| `ISSUE_FETCH_LIMIT`  | Maximum number of issues to fetch per project            | `500`                                                        |
+| `OUTPUT_DIR`         | Directory to store processed JSONL files                 | `"data/processed/"`                                          |
+| `LOG_FILE`           | Path to the log file for tracking scraping progress      | `"logs/scraper.log"`                                         |
+| `BASE_URL`           | Base URL of the Apache JIRA server                       | `"https://issues.apache.org/jira/rest/api/2/search"`         |
+
