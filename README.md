@@ -75,9 +75,20 @@ apache-jira-scraper/
 ├── main.py                   # Entry point for the scraper
 ├── requirements.txt          # Dependencies list
 └── README.md                 # Project documentation
-
-
 ```
+## ⚙️ Configuration
+
+All configuration variables are stored in **`config/settings.py`**.  
+Below is a table describing each key configuration parameter:
+
+| Variable Name       | Description                                              | Example Value                                                |
+|----------------------|----------------------------------------------------------|--------------------------------------------------------------|
+| `PROJECTS`           | List of Apache project names to scrape                   | `["HADOOP", "SPARK", "KAFKA"]`                              |
+| `ISSUE_FETCH_LIMIT`  | Maximum number of issues to fetch per project            | `500`                                                        |
+| `OUTPUT_DIR`         | Directory to store processed JSONL files                 | `"data/processed/"`                                          |
+| `LOG_FILE`           | Path to the log file for tracking scraping progress      | `"logs/scraper.log"`                                         |
+| `BASE_URL`           | Base URL of the Apache JIRA server                       | `"https://issues.apache.org/jira/rest/api/2/search"`         |
+
 ## ⚙️ Installation & Setup
 
 Follow these steps to set up and run the scraper locally 👇
@@ -134,16 +145,17 @@ DEFAULT_PROJECTS = ["HADOOP", "SPARK", "KAFKA"]
 Each project’s issue data will be scraped, transformed, and saved in .jsonl format under the data/processed directory.
 
 
-## ⚙️ Configuration
 
-All configuration variables are stored in **`config/settings.py`**.  
-Below is a table describing each key configuration parameter:
 
-| Variable Name       | Description                                              | Example Value                                                |
-|----------------------|----------------------------------------------------------|--------------------------------------------------------------|
-| `PROJECTS`           | List of Apache project names to scrape                   | `["HADOOP", "SPARK", "KAFKA"]`                              |
-| `ISSUE_FETCH_LIMIT`  | Maximum number of issues to fetch per project            | `500`                                                        |
-| `OUTPUT_DIR`         | Directory to store processed JSONL files                 | `"data/processed/"`                                          |
-| `LOG_FILE`           | Path to the log file for tracking scraping progress      | `"logs/scraper.log"`                                         |
-| `BASE_URL`           | Base URL of the Apache JIRA server                       | `"https://issues.apache.org/jira/rest/api/2/search"`         |
 
+Output Format
+
+All processed issues are stored in:
+```
+data/processed/{project_name}_issues.jsonl
+```
+Example:
+```
+{"id": "HADOOP-1001", "summary": "Fix namenode error", "status": "Open", "reporter": "user123"}
+{"id": "SPARK-2020", "summary": "Improve shuffle performance", "status": "Closed", "reporter": "dev456"}
+```
