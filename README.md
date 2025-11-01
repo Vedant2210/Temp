@@ -163,18 +163,18 @@ Example log entry:
 
 ## ⚙️ Data Flow Overview
 
-The following diagram illustrates the complete workflow of the **Apache JIRA Scraper** —  
-from configuration loading, issue fetching, and data transformation, to logging and output generation.
+This diagram shows the end-to-end flow of the **Apache JIRA Scraper** —  
+from configuration loading to issue fetching, transformation, and logging.
 
 ```mermaid
 flowchart TD
-    A([🏁 Start main.py]) --> B[⚙️ Load Configuration<br/>config/settings.py]
-    B --> C[🔍 Fetch Issues<br/>JiraScraper (scraper.py)]
-    C --> D[🌐 Handle Pagination & Rate Limits<br/>+ Retry on Failure]
-    D --> E[💾 Save Raw Data<br/>data/raw/]
-    E --> F[🧹 Clean & Transform Data<br/>DataTransformer (transform.py)]
-    F --> G[🪶 Generate JSONL Output]
-    G --> H[📁 Save Processed Data<br/>data/processed/]
-    H --> I[🧾 Log Activities<br/>logs/*.log]
-    I --> J([✅ End of Pipeline])
+    A([Start main.py]) --> B[Load Configuration (config/settings.py)]
+    B --> C[Fetch Issues - JiraScraper (scraper.py)]
+    C --> D[Handle Pagination, Rate Limits & Retries]
+    D --> E[Save Raw Data (data/raw/)]
+    E --> F[Clean & Transform Data - DataTransformer (transform.py)]
+    F --> G[Generate JSONL Output]
+    G --> H[Save Processed Data (data/processed/)]
+    H --> I[Log Progress (logs/*.log)]
+    I --> J([End of Pipeline])
 
