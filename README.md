@@ -161,20 +161,15 @@ Example log entry:
 [2025-11-01 14:26:12] WARNING: Failed to fetch issue SPARK-998 (Timeout)
 ```
 
-## ⚙️ Data Flow Overview
-
-This diagram shows the end-to-end flow of the **Apache JIRA Scraper** —  
-from configuration loading to issue fetching, transformation, and logging.
-
-```mermaid
 flowchart TD
-    A([Start main.py]) --> B[Load Configuration (config/settings.py)]
-    B --> C[Fetch Issues - JiraScraper (scraper.py)]
+    A([Start main.py]) --> B[Load Configuration: config/settings.py]
+    B --> C[Fetch Issues: JiraScraper (scraper.py)]
     C --> D[Handle Pagination, Rate Limits & Retries]
-    D --> E[Save Raw Data (data/raw/)]
-    E --> F[Clean & Transform Data - DataTransformer (transform.py)]
+    D --> E[Save Raw Data: data/raw/]
+    E --> F[Clean & Transform Data: DataTransformer (transform.py)]
     F --> G[Generate JSONL Output]
-    G --> H[Save Processed Data (data/processed/)]
-    H --> I[Log Progress (logs/*.log)]
+    G --> H[Save Processed Data: data/processed/]
+    H --> I[Log Progress: logs/*.log]
     I --> J([End of Pipeline])
+
 
