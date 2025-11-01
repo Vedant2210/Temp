@@ -1,142 +1,77 @@
-# Temp
-Web Scraping Tutor
+# 🐘 Apache JIRA Scraper
 
-🕸️ Apache Jira Scraper
+> A robust, modular Python-based scraper to collect, process, and transform issue data from **Apache JIRA** projects (like Hadoop, Spark, and Kafka) into structured **JSONL format** — ideal for analytics or LLM training.
 
-🚀 A scalable, fault-tolerant web scraping pipeline to extract and transform Apache Jira issue data into structured JSONL format suitable for LLM training.
+---
 
-🧩 Overview
+## 🏷️ Badges
 
-This project automates the extraction of public issue data from Apache’s Jira instance and transforms it into a clean dataset for Large Language Model (LLM) training or downstream NLP tasks.
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Contributions](https://img.shields.io/badge/Contributions-Welcome-orange)
 
-It was developed as part of the Scaler Web Scraping Assignment to demonstrate:
+---
 
-Resilient API scraping with rate-limit handling
+## 🧠 Overview
 
-Data checkpointing and recovery
+The **Apache JIRA Scraper** automates the extraction of public issue data from Apache’s JIRA system using REST APIs.  
+It helps researchers, developers, and data engineers create high-quality datasets by scraping issue descriptions, comments, metadata, and transforming them into a **machine-readable** format.
 
-Structured data transformation into JSONL corpus
+This tool is designed for:
+- 📊 Data collection for ML/NLP research  
+- 🧪 Issue tracking & project analytics  
+- 🤖 Training datasets for LLM fine-tuning  
 
-Logging and error handling for large-scale scraping
+---
 
-🎯 Objective
+## ⚙️ Tech Stack
 
-The system is designed to:
+| Category | Tools / Libraries |
+|-----------|-------------------|
+| **Language** | Python 3.10+ |
+| **HTTP Requests** | `requests` |
+| **Data Handling** | `json`, `pandas` |
+| **Logging** | `logging`, custom loggers |
+| **Configuration** | `argparse`, `settings.py` |
+| **Environment** | `venv` |
+| **Output Format** | `.jsonl` |
+| **Version Control** | Git & GitHub |
 
-Scrape issues (titles, descriptions, comments, metadata) from multiple Apache Jira projects.
+---
 
-Handle real-world issues like network failures, rate limits, and timeouts.
+## 🧩 Features
 
-Resume automatically from the last successful checkpoint if interrupted.
+✅ Fetches issue data from multiple Apache projects (Hadoop, Spark, Kafka, etc.)  
+✅ Transforms raw JSON into cleaned `.jsonl` format  
+✅ Auto-handles rate limits and retries  
+✅ Logs every step for debugging & monitoring  
+✅ Checkpoint system for fault tolerance  
+✅ Configurable via `config/settings.py`  
+✅ Modular and extensible for new data pipelines  
 
-Transform data into structured JSONL format ready for machine learning pipelines.
+---
 
-🧠 Features
-Feature	Description
-🧾 Multi-Project Scraping	Fetches issues from multiple Apache projects (HADOOP, SPARK, KAFKA)
-🔁 Pagination & Checkpoints	Automatically handles paginated API calls and resumes from checkpoints
-⚡ Exponential Backoff Retries	Retries failed requests intelligently to avoid hammering the API
-🧱 Fault-Tolerant Design	Handles network drops, malformed data, and HTTP 429 / 5xx gracefully
-🧹 JSONL Transformation	Converts unstructured Jira data into clean JSONL lines
-🪵 Centralized Logging	All activities logged under the /logs folder
-💾 Modular Architecture	Configurable settings via config/settings.py
-🏗️ Architecture Overview
+## 📁 Project Structure
+
+```bash
 apache-jira-scraper/
 │
-├── main.py                  # Entry point for the scraper pipeline
 ├── config/
-│   └── settings.py          # Configurations (URLs, limits, paths)
-│
-├── src/
-│   ├── scraper.py           # JiraScraper class (fetching issues)
-│   ├── transform.py         # DataTransformer class (JSONL processing)
-│   ├── utils.py             # Helper functions (checkpointing, file ops)
-│   └── logger.py            # Custom logging setup
+│   └── settings.py           # Configuration variables (project list, limits)
 │
 ├── data/
-│   ├── raw/                 # Raw API JSON responses
-│   ├── processed/           # Final processed JSONL outputs
-│   └── checkpoints/         # Resume states for each project
+│   ├── raw/                  # Raw JSON data from JIRA API
+│   ├── processed/            # Cleaned JSONL files
+│   └── checkpoints/          # Track last processed issue ID
 │
-└── logs/                    # Log files
-
-⚙️ Setup Instructions
-1️⃣ Clone the Repository
-git clone https://github.com/YOUR_GITHUB_USERNAME/apache-jira-scraper.git
-cd apache-jira-scraper
-
-2️⃣ Create a Virtual Environment
-python -m venv venv
-venv\Scripts\activate     # On Windows
-# or
-source venv/bin/activate  # On macOS/Linux
-
-3️⃣ Install Dependencies
-pip install -r requirements.txt
-
-4️⃣ Configure Settings (optional)
-
-Edit config/settings.py to adjust:
-
-Projects list (DEFAULT_PROJECTS)
-
-Rate limit delays
-
-Max issues per project
-
-Save paths
-
-5️⃣ Run the Scraper
-python main.py
-
-📊 Output
-🗂️ Raw Data
-
-Raw JSON data for each project is saved in:
-
-/data/raw/{PROJECT_NAME}_{offset}.json
-
-🧮 Processed JSONL
-
-Final LLM-ready data is stored in:
-
-/data/processed/{PROJECT_NAME}_processed.jsonl
-
-
-Each line in .jsonl contains one JSON object like:
-
-{
-  "project": "HADOOP",
-  "key": "HADOOP-12345",
-  "title": "Improve shuffle performance in MapReduce",
-  "status": "Closed",
-  "description": "Detailed explanation of the shuffle bottleneck...",
-  "comments": ["This patch improves...", "Merged in r1234"],
-  "created": "2024-07-01T10:12:00.000+0000",
-  "updated": "2024-07-05T11:30:00.000+0000",
-  "labels": ["performance", "optimization"]
-}
-
-🧰 Key Concepts Implemented
-
-✅ REST API integration with Apache Jira
-
-✅ Rate limit handling (429) and backoff strategies
-
-✅ Checkpoint-based recovery
-
-✅ Structured data transformation
-
-✅ Clean modular OOP design
-
-✅ Extensive logging system
-
-✅ Configurable constants for scalability
-
-🧱 Error Handling Strategies
-Case	Solution
-Network failure	Exponential backoff retry mechanism
-API rate limit (429)	Graceful wait with retry
-5xx server errors	Automatic retry with delay
-Incomplete run	Checkpoint reload resumes last position
-Empty/malformed JSON	Skipped and logged without crashing
+├── logs/                     # Logging directory
+│
+├── src/
+│   ├── scraper.py            # Core scraper logic
+│   ├── transform.py          # Data transformation and saving
+│   └── logger.py             # Logging setup
+│
+├── main.py                   # Entry point for the scraper
+├── requirements.txt          # Dependencies list
+└── README.md                 # Project documentation
